@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>newsletter.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h6 id="revelio-labs-newsletter">Revelio Labs Newsletter</h6>
+<h2 id="an-insight-from-the-inner-circle-of-recruiting">An insight from the inner circle of recruiting</h2>
+<p><em><strong>April 30, 2026</strong></em></p>
+<h5 id="key-takeaways">Key Takeaways</h5>
+<ul>
+<li>AI did <strong>not</strong> make hiring faster; in fact, average time-to-fill has increased across most roles since introduction of AI</li>
+<li>Major tech companies slowed headcount growth dramatically after the AI boom, but hiring intensity (postings per employee) varied significantly</li>
+<li>Roles that take unusually long to fill are overwhelmingly <strong>low-salary / entry-level</strong> positions</li>
+<li>Engineering and Software Engineering dominate postings but also show some of the longest filling times.</li>
+</ul>
+<hr>
+<p>In one of our previous <a href="https://www.reveliolabs.com/news/social/what-you-study-matters-more-than-where-you-study/">newsletter pieces</a>, we discussed how <strong>what</strong> you study matters more than <strong>where</strong> you study. Today, we look at the other side of the table: how hiring trends have shifted inside big companies and what this means for recent graduates and job seekers.</p>
+<p>When ChatGPT launched in late 2022, the expectation was simple: artificial intelligence would supercharge repetitive work; including HR and hiring. Companies were expected to post more jobs, fill roles faster, and expand at record speed.</p>
+<p>The actual data, however, tells a very different story.</p>
+<p><img src="images/headcount_y.png" alt="Total headcount for major tech and chip companies over time"></p>
+<p>Right after the AI boom began, almost every major tech company suddenly slowed its headcount growth. The steady upward trend that had lasted for years flattened almost overnight.</p>
+<p>Even in this slower environment, companies behaved differently. We call this metric <strong>hiring intensity</strong> — the number of job postings relative to total headcount.</p>
+<p>Microsoft stood out by maintaining remarkably high hiring intensity throughout the period. Alphabet (Google’s parent company) took a more cautious, cyclical approach, keeping hiring intensity much more stable and even pausing during certain periods of the year.</p>
+<p><img src="images/total_bubble.png" alt="Company hiring intensity across time — Post AI"></p>
+<p>Many companies had to balance two critical questions: stay ahead in AI development or move cautiously while figuring out the right strategy. Although the number of postings didn’t collapse, the time required to fill roles started changing noticeably.</p>
+<hr>
+<h5 id="what-has-been-happening-across-the-globe">What has been happening across the globe?</h5>
+<p><img src="images/countryATF_agg.png" alt="Global disruptions in hiring post-AI boom — Top 10 countries"></p>
+<p>At a macro level, countries were also disrupted. Almost all top-10 countries (by job posting volume) experienced a sudden spike right after November 2022. This suggests AI changed the chemistry of hiring. However, average time-to-fill has continued to fluctuate, indicating that either AI is still not fully leveraged in recruitment, or the volume of hiring has scaled up so much that overall filling times remain elevated. We would evaluate this in the future.</p>
+<hr>
+<p><img src="images/totalposting_faang.png" alt="FAANG+ hiring intensity and time to fill"></p>
+<p>Looking specifically at FAANG+ companies from the AI boom through July 2025, we see that while job postings fluctuated (especially in 2024), the <strong>average time to fill</strong> those jobs has been steadily increasing. Even non-tech companies, while more stable in their posting volume, have faced longer filling times.</p>
+<hr>
+<h5 id="what-does-this-mean-for-us-humans-in-the-job-market">What does this mean for us humans in the job market?</h5>
+<p>Although we are still early in AI adoption for everyday recruiting tasks, some clear patterns are emerging.</p>
+<p>We analyzed job postings from late 2022( introduction of Chat GPT) to July 2025 across 10 major role categories (proprietary to Revelio Labs). We excluded four categories with very low volume (Healthcare, Technicians, Service Workers, and Education) because they often use specialized pipelines outside of standard job boards.</p>
+<p>Among the remaining roles, nearly 73% of postings were in Engineering and IT-related categories. The rest were split between Marketing &amp; Sales, Finance, and Operations.</p>
+<p><img src="images/outlier.png" alt="Salary distribution: Normal vs Unusual (long time to fill) jobs"></p>
+<p><strong>Roles that take unusually long to fill look different from the rest.</strong> The hardest-to-fill positions consistently come with <strong>lower salaries</strong>. In other words, AI appears to be disproportionately affecting entry-level roles.</p>
+<p>While the total number of unusually long-to-fill jobs remains small (less than 1% in each category), they exist and roughly 80% of them fall in the lower-paying tier.</p>
+<hr>
+<h5 id="key-takeaway-for-recent-graduates-and-job-seekers">Key Takeaway for Recent Graduates and Job Seekers</h5>
+<p>If you are a recent graduate in engineering or software engineering, expect longer application cycles than pre-AI norms. Some roles that once took weeks to fill may now take <strong>two months or more</strong> in extreme cases.</p>
+<p>The job market is not disappearing; on the contrary, it is evolving and nderstanding these shifts gives you a real advantage as you navigate your next steps.</p>
+<p>AI has not yet delivered the promised acceleration in hiring. Instead, it has created a more complex, slower, and more selective recruiting environment — especially for entry-level technical roles. Companies are being more deliberate, and the data shows that patience and strategic preparation will be essential for job seekers in the years ahead.</p>
+
+</body>
+</html>
